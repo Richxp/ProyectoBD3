@@ -1,0 +1,21 @@
+Creamos primero la carpeta donde estara todo el proyecto inicializamos el nodejs
+-npm init --yes
+
+instalamos los modulos 
+- npm i express express-handlebars express-session method-override mongoose passport passport-local bcryptjs
+- npm install @handlebars/allow-prototype-access
+
+Creamos las carpetas para las diferentes secciones del proyecto 
+
+views:almacenara todos los archivos que enviamos al navegador es decir todas las vistas html.
+
+routes:Crear url o rutas al servidor 
+
+public: insertar archivos estaticos : img css , etc.
+
+models: definir como van a lucir los datos en la bd 
+
+helpers: funciones que mi servidor fuer a autilizar que pueden reutilizarse 
+
+config: almacenar distintos archivos de configuracion o conexxiones o declaracion de variables de configuracion, insertar la configuracion de autenticidad 
+
