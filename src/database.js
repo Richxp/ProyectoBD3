@@ -6,4 +6,4 @@ mongoose.connect('mongodb://localhost/SLA',{
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
-}).then(db=> console.log('Se conecto a la BD)).catch(err => console.error(err));
+}).then(db=> console.log('Se conecto a la BD')).catch(err => console.error(err));
