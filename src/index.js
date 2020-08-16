@@ -17,7 +17,6 @@ const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-acce
 
 //Dividimos el codigo en 3 secciones
 
-
 //SETTINGS
 app.set('port', process.env.PORT|| 3000);
 app.set('views', path.join(__dirname, 'views'));
