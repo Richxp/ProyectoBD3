@@ -21,10 +21,28 @@ router.get('/users/signup', (req, res)=>{
 });
 
 router.post('/users/signup', async (req,res)=>{
-    const {name,email,password,confirm_password}= req.body;
+    const {firstname,lastname,doc_id,username,email,password,confirm_password,phone,street,city,country,zipcode}= req.body;
     const errors=[];
-    if(name.length<=0){
-        errors.push({text:'Please Insert your name'})
+    if(firstname.length<=0){
+        errors.push({text:'Please insert your firstname'})
+    }
+    if(lastname.length<=0){
+        errors.push({text:'Please insert your lastname'})
+    }
+    if(doc_id.length<=0){
+        errors.push({text:'Please insert your number of identication'})
+    }
+    if(username.length<=0){
+        errors.push({text:'Please insert your username'})
+    }
+    if(street.length<=0){
+        errors.push({text:'Please insert your street'})
+    }
+    if(city.length<=0){
+        errors.push({text:'Please insert your city'})
+    }
+    if(country.length<=0){
+        errors.push({text:'Please insert your country'})
     }
     if(password != confirm_password){
         errors.push({text:'Password do not match'});
@@ -33,14 +51,14 @@ router.post('/users/signup', async (req,res)=>{
         errors.push({text:'Password must be at least 4 characters'});
     }
     if(errors.length>0){
-        res.render('users/signup',{errors,name,email,password,confirm_password});
+        res.render('users/signup',{errors,firstname,lastname,doc_id,username,email,password,confirm_password,phone,street,city,country,zipcode});
     }else{
         const emailUser = await User.findOne({email: email});
         if(emailUser){
             req.flash('error_msg', 'The Email is already in use');
             res.redirect('/users/signup');
         }
-        const newUser=new User({name,email, password});
+        const newUser=new User({firstname,lastname,doc_id,username,email,password,phone,street,city,country,zipcode});
         newUser.password= await newUser.encryptPassword(password);
         await newUser.save();
         req.flash('success_msg', 'You are registered');
