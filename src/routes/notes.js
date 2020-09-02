@@ -12,8 +12,9 @@ router.get('/notes/add', isAuthenticated, (req,res)=>{
     res.render('notes/new-note');
 });
 
+//CREAR RECLAMOS
 router.post('/notes/new-note' , isAuthenticated, async (req,res)=>{
-    const {title,description}= req.body;
+    const {title,description,priority,status}= req.body;
     const errors= [];
     if(!title){
         errors.push({text: 'Please write a Title'});
@@ -25,10 +26,12 @@ router.post('/notes/new-note' , isAuthenticated, async (req,res)=>{
         res.render('notes/new-note', {
             errors,
             title,
-            description
+            description,
+            priority,
+            status
         });
     }else{
-        const newNote = new Note({title,description});
+        const newNote = new Note({title,description,priority,status});
         //guardar el dato dentro de la BD
         newNote.user=req.user.id;
         await newNote.save();
@@ -37,16 +40,19 @@ router.post('/notes/new-note' , isAuthenticated, async (req,res)=>{
     }
 });
 
+//MOSTRAR RECLAMOS POR USUARIOS
 router.get('/notes',isAuthenticated, async (req, res)=>{
     const notes = await Note.find({user: req.user.id}).sort({date: 'desc'});
     res.render('notes/all-notes', { notes });
 });
 
+//EDITAR RECLAMOS POR USUARIOS
 router.get('/notes/edit/:id',isAuthenticated, async (req,res)=>{
     const note = await Note.findById(req.params.id)
     res.render('notes/edit-note', {note})
 });
 
+//EDITAR RECLAMOS POR USUARIOS
 router.put('/notes/edit-note/:id',isAuthenticated, async (req,res)=>{
     const {title, description}=req.body;
     await Note.findByIdAndUpdate(req.params.id, {title,description});
