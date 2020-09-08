@@ -46,11 +46,6 @@ router.get('/notes',isAuthenticated, async (req, res)=>{
     res.render('notes/all-notes', { notes });
 });
 
-//MOSTRAR PANTALLA DE BUSQUEDA DE ADMINISTRADORES
-router.get('/notesA',isAuthenticated, async (req, res)=>{
-    const notes = await Note.find().sort({date: 'desc'});
-    res.render('notesA/admi-init', { notes });
-});
 
 //EDITAR RECLAMOS POR USUARIOS
 router.get('/notes/edit/:id',isAuthenticated, async (req,res)=>{
@@ -88,5 +83,17 @@ router.get('/notes', async (req, res) => {
   }); 
 */
 
+//RUTAS DE ADMINISTRADOR
 
+//MOSTRAR PANTALLA DE BUSQUEDA DE ADMINISTRADORES
+router.get('/notesA',isAuthenticated, async (req, res)=>{
+    
+    res.render('notesA/admi-init');
+});
+
+//MOSTRAR PANTALLA DE TODOS LAS NOTAS
+router.get('/notesA/all-notes-admin',isAuthenticated, async (req, res)=>{
+    const notes = await Note.find().sort({date: 'desc'});
+    res.render('notesA/all-notes-admin', { notes });
+});
 module.exports = router;
