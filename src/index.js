@@ -10,6 +10,7 @@ const passport = require('passport');
 const app = express();
 require('./database');
 require('./config/passport');
+require('./config/passadmi');
 
 //Para poder utilizar los metodos de read y update 
 const Handlebars = require('handlebars');
@@ -57,6 +58,7 @@ app.use((req,res, next)=>{
     res.locals.error_msg= req.flash('error_msg');
     res.locals.error= req.flash('error');
     res.locals.user=req.user || null;
+    //res.locals.admi=req.admi || null;
     next();
 })
 

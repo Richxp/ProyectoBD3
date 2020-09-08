@@ -7,7 +7,7 @@ const UserSchema = new Schema({
     firstname:{type: String, required:true},
     lastname:{type: String, required:true},
     doc_id:{type: String, required:true, unique:true},
-    username:{type: String, required:true, unique:true},
+    username:{type: String, default:null},
     email: {type:String, required:true, unique:true},
     password: {type:String, required:true},
     phone:{type: Number, required:false},
@@ -15,7 +15,7 @@ const UserSchema = new Schema({
     city:{type: String, required:true},
     country:{type: String, required:true},
     zipcode:{type: String, required:false},
-    role:{type: Boolean, default:false},
+    role:{type: Boolean, default:0},
     date:{type:Date, default:Date.now}
 });
 

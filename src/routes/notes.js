@@ -46,6 +46,12 @@ router.get('/notes',isAuthenticated, async (req, res)=>{
     res.render('notes/all-notes', { notes });
 });
 
+//MOSTRAR PANTALLA DE BUSQUEDA DE ADMINISTRADORES
+router.get('/notesA',isAuthenticated, async (req, res)=>{
+    const notes = await Note.find().sort({date: 'desc'});
+    res.render('notesA/admi-init', { notes });
+});
+
 //EDITAR RECLAMOS POR USUARIOS
 router.get('/notes/edit/:id',isAuthenticated, async (req,res)=>{
     const note = await Note.findById(req.params.id)

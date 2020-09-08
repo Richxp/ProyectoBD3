@@ -15,26 +15,52 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                {{#if user}}
+                {{#if user.username}}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Notes
+                            Action
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/notes">All notes</a>
-                            <a class="dropdown-item" href="/notes/add">Add notes</a>
+                            <a class="dropdown-item" href="#">Holi</a>
+                            <a class="dropdown-item" href="#">Boli</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/users/logout">Logout</a>
                         </div>
                     </li>
                 {{else}}
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/users/signin">SignIn</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/users/signup">SignUp</a>
-                    </li>
+                    {{#if user}}
+                    <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Notes
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/notes">All notes</a>
+                                <a class="dropdown-item" href="/notes/add">Add notes</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/users/logout">Logout</a>
+                            </div>
+                        </li>
+                    {{else}}
+                    <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            SignIn
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/users/signin">User</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/users/signinA">Administrator</a>
+                            </div>
+                        </li>
+                        <!--
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/users/signin">SignIn</a>-->
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/users/signup">SignUp</a>
+                        </li>
+                    {{/if}}
                 {{/if}}
                         
             </ul>
