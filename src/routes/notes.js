@@ -12,6 +12,12 @@ router.get('/notes/add', isAuthenticated, (req,res)=>{
     res.render('notes/new-note');
 });
 
+//Mostrar el perfil del usuario
+router.get('/notes/profile',isAuthenticated, async (req, res)=>{
+    //const notes = await Note.find({user: req.user.id}).sort({date: 'desc'});
+    res.render('notes/profile');
+});
+
 //CREAR RECLAMOS
 router.post('/notes/new-note' , isAuthenticated, async (req,res)=>{
     const {title,description,priority,status}= req.body;
@@ -87,13 +93,19 @@ router.get('/notes', async (req, res) => {
 
 //MOSTRAR PANTALLA DE BUSQUEDA DE ADMINISTRADORES
 router.get('/notesA',isAuthenticated, async (req, res)=>{
-    
     res.render('notesA/admi-init');
 });
+
 
 //MOSTRAR PANTALLA DE TODOS LAS NOTAS
 router.get('/notesA/all-notes-admin',isAuthenticated, async (req, res)=>{
     const notes = await Note.find().sort({date: 'desc'});
     res.render('notesA/all-notes-admin', { notes });
+});
+
+//MOSTRAR EL PERFIL DEL ADMINISTRADOR
+router.get('/notesA/profileA',isAuthenticated, async (req, res)=>{
+    //const notes = await Note.find({user: req.user.id}).sort({date: 'desc'});
+    res.render('notesA/profileA');
 });
 module.exports = router;
