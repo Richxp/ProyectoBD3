@@ -1,16 +1,16 @@
+
 const passport= require('passport');
 
 const LocalStrategy=require('passport-local');
 const User = require('../models/User');
+const { db } = require('../models/User');
 
-
-//Autenticacion local de usuarios por defecto te lo guarda como local
-passport.use('usuario',new LocalStrategy({
-    usernameField:'email'
-}, async (email, password, done)=>{
-    const user= await User.findOne({email: email});
+passport.use('administrador',new LocalStrategy({
+    usernameField:'username'
+}, async (username, password, done)=>{
+    const user= await User.findOne({username: username});
     if(!user){
-        return done(null, false, {message: 'Not User found.'});
+        return done(null, false, {message: 'No tienes permisos.'});
     } else{
         const match = await user.matchPassword(password);
         if(match){
@@ -19,6 +19,7 @@ passport.use('usuario',new LocalStrategy({
             return done(null,false, {message:'Incorrect Password'});
         }
     }
+
 }
 ));
 
@@ -32,3 +33,4 @@ passport.deserializeUser((id,done)=>{
         done(err,user);
     });
 });
+
