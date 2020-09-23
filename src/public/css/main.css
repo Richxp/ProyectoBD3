@@ -1,7 +1,13 @@
 body{
-    background: #23074d;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #cc5333, #23074d);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #cc5333, #23074d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /*
+    background: #23074d;  /* fallback for old browsers 
+    background: -webkit-linear-gradient(to right, #cc5333, #23074d);  /* Chrome 10-25, Safari 5.1-6 
+    background: linear-gradient(to right, #cc5333, #23074d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ 
+    */
+    background-image: url('../img/business-2.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     margin:0;
     height: 100%;
 
@@ -9,7 +15,7 @@ body{
 
 html{
     height: 100%;
-    margin:0;
+    /*margin:0;*/
 }
 
 .logo{
@@ -19,17 +25,18 @@ html{
 .content{
     min-height: 100%;
 }
-
+/*
 .content-inside{
-    /*padding: 20px;*/
+    /*padding: 20px;
     padding-bottom: 50px;
 }
-
+*/
 
 footer {
-    background-color: #272b30;
+    background-color: rgba(39, 43, 48, 0.8);
+    /*background-color: #272b30;*/
     height: 50px;
-    margin-top: -50px;   
+    margin-top: -30px;   
 }
 
 footer p{

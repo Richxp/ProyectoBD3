@@ -89,6 +89,10 @@ router.get('/notes', async (req, res) => {
   }); 
 */
 
+
+
+
+
 //RUTAS DE ADMINISTRADOR
 
 //MOSTRAR PANTALLA DE BUSQUEDA DE ADMINISTRADORES
