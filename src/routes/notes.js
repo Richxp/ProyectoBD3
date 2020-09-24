@@ -104,7 +104,7 @@ router.get('/notesA',isAuthenticated, async (req, res)=>{
 //MOSTRAR PANTALLA DE TODOS LAS NOTAS
 router.get('/notesA/all-notes-admin',isAuthenticated, async (req, res)=>{
     const notes = await Note.find().sort({date: 'desc'});
-    res.render('notesA/all-notes-admin', { notes });
+    res.render('notesA/all-notes-admin', { notes});
 });
 
 //MOSTRAR EL PERFIL DEL ADMINISTRADOR

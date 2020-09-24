@@ -8,7 +8,7 @@ const NoteSchema = new Schema({
     priority: {type:String, default: "Baja"},
     status: {type:String, default: "Enviado"},
     solution: {type:String, default: "Pendiente de solución"},
-    date:{type:Date, default:Date.now},
+    date:{type:Date, default:Date.now()},
     user:{type: String}
 });
 

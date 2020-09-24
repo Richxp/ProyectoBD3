@@ -2,7 +2,7 @@ Creamos primero la carpeta donde estara todo el proyecto inicializamos el nodejs
 -npm init --yes
 
 instalamos los modulos 
-- npm i express express-handlebars express-session method-override mongoose passport passport-local bcryptjs
+- npm i express express-handlebars express-session method-override mongoose passport passport-local bcryptjs timeago.js multer fs-extra uuid moment
 - npm install @handlebars/allow-prototype-access
 
 Creamos las carpetas para las diferentes secciones del proyecto 

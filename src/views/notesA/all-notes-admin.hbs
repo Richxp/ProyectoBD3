@@ -1,7 +1,7 @@
 <div class="row">
     {{#each notes}}
         <div class="col-md-3">
-            <div class="card mb-3">
+            <div class="card mb-3 animate__animated animate__fadeInDownBig">
                 <!--
                 <div class="card-header">
                 {{user.firstname}}
@@ -15,6 +15,10 @@
                     <label for="name">Status: </label> {{status}}
                     <br>
                     <label for="name">Solution: </label> {{solution}}
+                    <!--<br>
+                    <p class="card-text"></p>-->
+                    <br>
+                    <p class="card-text">{{timeago date}}</p>
                     <br> <br>
                     <form action="/notes/delete/{{_id}}?_method=DELETE" method="POST">
                         <input type="hidden" name="_method" value="DELETE">

@@ -6,6 +6,11 @@ const session = require('express-session');
 const flash= require('connect-flash');
 const passport = require('passport');
 
+//Adicionales para la foto y fechas
+const { v4: uuidv4 } = require('uuid');
+const multer = require('multer');
+const {format}=require('timeago.js');
+
 //INITLIAZATIONS
 const app = express();
 require('./database');
@@ -30,7 +35,8 @@ app.engine('.hbs', exphbs({
     //carpeta donde estara codigo reutilizable de html para reutilizar en cualquier vista  poniendolo en un archivo hbs
     partialsDir: path.join(app.get('views'), 'partials'),
     //que extension tendran todos nuestros archivos
-    extname: '.hbs'
+    extname: '.hbs',
+    helpers: require('./helpers')
 }));
 // para utilizar el motor de plantilla se usa el siguiente comando 
 app.set('view engine', '.hbs');
@@ -58,6 +64,7 @@ app.use((req,res, next)=>{
     res.locals.error_msg= req.flash('error_msg');
     res.locals.error= req.flash('error');
     res.locals.user=req.user || null;
+    //res.locals.format=format;
     //res.locals.admi=req.admi || null;
     next();
 })
