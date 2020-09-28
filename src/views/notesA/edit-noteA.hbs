@@ -1,7 +1,7 @@
 <div class="col-md-4 mx-auto">
     <div class="card">
         <div class="card-header">
-            <h3>Edit Note Admi</h3>
+            <h3 style="text-align: center;">Edit Note Admi</h3>
         </div>
         <div class="card-body">
             <form action="/notesA/edit-noteA/{{note._id}}?_method=PUT" method="POST">
@@ -9,8 +9,18 @@
                 <div class="form-group">
                     <input type="text" name="title" class="form-control" placeholder="Title" value="{{note.title}}">
                 </div>
+                <p style="font-size: large;color: #fcfcfc;">Status</p>
                 <div class="form-group">
-                    <textarea name="description" class="form-control">
+                    <input type="radio" name="status" value="Revisado"> Revisado
+                    <input type="radio" name="status" value="Pendiente"> Pendiente 
+                    <input type="radio" name="status" value="Solucionado"> Solucionado
+                </div>
+                <p style="font-size: large;color: #fcfcfc;">Solution</p>
+                <div class="form-group">
+                    <input type="text" name="solution" class="form-control" placeholder="Solution" value="{{note.solution}}">
+                </div>
+                <div class="form-group">
+                    <textarea name="description" class="form-control" rows="10" cols="40">
                         {{note.description}}
                     </textarea>
                 </div>

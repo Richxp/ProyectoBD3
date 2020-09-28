@@ -72,25 +72,6 @@ router.delete('/notes/delete/:id',isAuthenticated, async (req,res)=>{
     req.flash('success_msg', 'Note Deleted Successfuly');
     res.redirect('/notes');
 });
-/*
-router.get('/notes', async (req, res) => {
-    await Note.find()
-      .then(documentos => {
-        const contexto = {
-            notes: documentos.map(documento => {
-            return {
-                title: documento.title,
-                description: documento.description
-            }
-          })
-        }
-        res.render('notes/all-notes', {notes: contexto.notes }) 
-      })
-  }); 
-*/
-
-
-
 
 
 //RUTAS DE ADMINISTRADOR
@@ -120,11 +101,22 @@ router.get('/notesA/editA/:id',isAuthenticated, async (req,res)=>{
 });
 
 
-//EDITAR RECLAMOS POR USUARIOS
+//EDITAR RECLAMOS POR ADMINISTRADOR
 router.put('/notesA/edit-noteA/:id',isAuthenticated, async (req,res)=>{
-    const {title, description}=req.body;
-    await Note.findByIdAndUpdate(req.params.id, {title,description});
-    req.flash('success_msg', 'Note Updated Successfuly');
+    const {title, description,status,solution}=req.body;
+    /* const errors= [];
+    if(!status){
+        errors.push({text: 'Please write a Status'});
+    }
+    if(errors.length>0){
+        res.render('/notesA', {
+            errors,
+            status
+        });
+    }else{       
+    } */
+    await Note.findByIdAndUpdate(req.params.id, {title,description,status,solution});
+    req.flash('success_msg', 'Claim Updated Successfuly');
     res.redirect('/notesA');
 });
 module.exports = router;
