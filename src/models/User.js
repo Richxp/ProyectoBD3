@@ -16,6 +16,7 @@ const UserSchema = new Schema({
     country:{type: String, required:true},
     zipcode:{type: String, required:false},
     role:{type: Boolean, default:0},
+    path:{type:String,default:null},
     date:{type:Date, default:Date.now}
 });
 

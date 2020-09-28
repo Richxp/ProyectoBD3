@@ -112,4 +112,19 @@ router.get('/notesA/profileA',isAuthenticated, async (req, res)=>{
     //const notes = await Note.find({user: req.user.id}).sort({date: 'desc'});
     res.render('notesA/profileA');
 });
+
+//EDITAR RECLAMOS POR ADMINISTRADOR
+router.get('/notesA/editA/:id',isAuthenticated, async (req,res)=>{
+    const note = await Note.findById(req.params.id)
+    res.render('notesA/edit-noteA', {note})
+});
+
+
+//EDITAR RECLAMOS POR USUARIOS
+router.put('/notesA/edit-noteA/:id',isAuthenticated, async (req,res)=>{
+    const {title, description}=req.body;
+    await Note.findByIdAndUpdate(req.params.id, {title,description});
+    req.flash('success_msg', 'Note Updated Successfuly');
+    res.redirect('/notesA');
+});
 module.exports = router;
