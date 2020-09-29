@@ -1,0 +1,4 @@
+junior
+junior123
+
+mongodb+srv://junior:junior123>@proyectobd3.l4goe.mongodb.net/pbd3?retryWrites=true&w=majority
