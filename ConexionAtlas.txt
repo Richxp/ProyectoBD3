@@ -1,4 +1,13 @@
+MongoDBAtlas
 junior
 junior123
 
+Aplicacion
 mongodb+srv://junior:junior123>@proyectobd3.l4goe.mongodb.net/pbd3?retryWrites=true&w=majority
+
+Shell
+mongo "mongodb+srv://proyectobd3.l4goe.mongodb.net/pbd3" --username junior
+
+Usuarios
+chavez@gmail.com
+123456789
